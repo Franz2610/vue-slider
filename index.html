@@ -13,12 +13,14 @@
 </head>
 <body>
     <div id="app">
+        <h1 class="justify-content-center align-items-center text-center">Che tipo di GAMER sei? Scoprilo ora! </h1>
+        <h3 class="bg-black text-white mb-5 container-md"> {{images[activeIndex].text}} </h3>
         <div id="wrapper" class=" container-md">
 
             <div class="slider">
                 <div class="slide active">
                     <img :src="images[activeIndex].image" :alt="images[activeIndex].title">
-                    <h1 class="bg-primary text-white"> {{images[activeIndex].text}} </h1>
+
                 </div>
                 
 
@@ -27,8 +29,8 @@
             </div>
 
             <div class="thumbr">
-                <div class="thumb" v-for ="image in images" :key="index">
-                    <img :src="image.image" :alt="image.title">
+                <div class="thumb" v-for ="(image,index) in images" :key="index">
+                    <img :src="image.image"  :class="{ thumb: activeIndex === index , thumbr: activeIndex !== index }":alt="image.title">
                 </div>
 
             </div>
