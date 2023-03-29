@@ -16,11 +16,19 @@
         <div id="wrapper" class=" container-md">
 
             <div class="slider">
-                <button class="next"><i class="fa-solid fa-chevron-circle-right"></i></button>
-                <button class="prev"><i class="fa-solid fa-chevron-circle-left"></i></button>
+                <div class="slide active">
+                    <img :src="images[activeIndex].image" :alt="images[activeIndex].title">
+                </div>
+                
+
+                <button class="next" @click="nextSlide"><i class="fa-solid fa-chevron-circle-right"></i></button>
+                <button class="prev" @click="prevSlide"><i class="fa-solid fa-chevron-circle-left"></i></button>
             </div>
-            
+
             <div class="thumbr">
+                <div class="thumb" :class="{'active': activeIndex === index}" v-for="(image,index) in images" :key="index">
+                    <img :src="images[activeIndex].image" :alt="images[activeIndex].title">
+                </div>
 
             </div>
         </div>
