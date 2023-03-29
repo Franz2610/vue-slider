@@ -32,7 +32,8 @@
 }
 .thumb{
     width: 100%;
-    height: 100%;
+    height: calc(100% / 5);
+    object-fit: cover;
 }
 
 .slide img{
@@ -71,3 +72,4 @@ button{
 .opacity{
     opacity: 1;
 }
+
