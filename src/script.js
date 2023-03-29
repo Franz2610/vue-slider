@@ -90,20 +90,49 @@ createApp({
                 ],
                 thumb : 'thumb',
                 thumbr : 'thumbr',
-                activeIndex: 0
+                activeIndex: 0,
+                timer : 0
             }
         },
-        mounted() {
+       /*mounted() {
             setInterval(() => {
               this.activeIndex = (this.activeIndex + 1) % this.images.length;
             }, 8000)
-          },
+          },*/
         methods: {
             nextSlide() {
                 this.activeIndex = (this.activeIndex + 1) % this.images.length;
+                if (this.activeIndex >= this.images.length)
+                this.activeIndex = 0;
+              this.resetPlay();
             },
             prevSlide() {
                 this.activeIndex = (this.activeIndex - 1) % this.images.length;
+                if (this.activeIndex < this.images.length)
+                this.activeIndex = 0;
+              this.resetPlay();
             },
-        }
+            resetPlay: function() {
+                clearInterval(this.timer);
+                this.play();
+              },
+              selectSlide: function(index) {
+                this.activeIndex = index;
+                this.resetPlay();
+              },
+              resetPlay: function() {
+                clearInterval(this.timer);
+                this.play();
+              },
+              play: function() {
+                let app = this;
+                this.timer = setInterval(function() {
+                  app.nextSlide();
+                  this.activeIndex = (this.activeIndex + 1) % this.images.length;
+                }, 12000)
+              }
+            },
+            created: function() {
+              this.play();
+            }
      }).mount('#app');

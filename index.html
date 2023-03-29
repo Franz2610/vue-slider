@@ -30,7 +30,7 @@
 
             <div class="thumbr">
                 <div class="thumb" v-for ="(image,index) in images" :key="index">
-                    <img :src="image.image"  :class="{ thumb: activeIndex === index , thumbr: activeIndex !== index }":alt="image.title">
+                    <img :src="image.image" @click="selectSlide(index)" :class="{ thumb: activeIndex === index , thumbr: activeIndex !== index }":alt="image.title">
                 </div>
 
             </div>
